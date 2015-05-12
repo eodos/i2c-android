@@ -1,0 +1,95 @@
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout">
+
+    <!-- Refresh button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_refresh_variables"
+        android:id="@+id/buttonRefresh"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Count Label -->
+    <TextView
+        android:id="@+id/countLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/count_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <!-- Count Value -->
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text=""
+        android:layout_alignTop="@id/countLabel"
+        android:layout_toRightOf="@id/countLabel"
+        android:layout_toEndOf="@id/countLabel" />
+
+    <!-- Temperature Label -->
+    <TextView
+        android:id="@+id/temperatureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_label"
+        android:layout_below="@+id/countLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp" />
+
+    <!-- Temperature Value -->
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text=""
+        android:layout_alignBottom="@id/temperatureLabel"
+        android:layout_toRightOf="@id/temperatureLabel"
+        android:layout_toEndOf="@id/temperatureLabel" />
+
+    <!-- x Label -->
+    <TextView
+        android:id="@+id/xLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/X_label"
+        android:layout_below="@id/temperatureLabel"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="3"
+        android:id="@+id/x"
+        android:layout_alignBottom="@id/xLabel"
+        android:layout_toRightOf="@id/xLabel"
+        android:layout_toEndOf="@id/xLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        android:id="@+id/xSend"
+        android:layout_alignBottom="@+id/x"
+        android:layout_toRightOf="@+id/x"
+        android:layout_toEndOf="@+id/x"/>
+
+</RelativeLayout>
