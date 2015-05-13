@@ -1,11 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
 
-    <CheckBox
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout">
+
+    <!-- Refresh button -->
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New CheckBox"
-        android:id="@+id/checkBox" />
-</LinearLayout>
+        android:text="@string/button_refresh_variables"
+        android:textSize="14dp"
+        android:id="@+id/buttonRefresh"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <!-- sensors refresh rate Label -->
+    <TextView
+        android:id="@+id/refreshRateLabel"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="@string/refreshRate_label"
+        android:lines="2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <!-- sensors refresh rate -->
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="3"
+        android:id="@+id/refreshRate"
+        android:layout_alignBottom="@id/refreshRateLabel"
+        android:layout_toRightOf="@id/refreshRateLabel"
+        android:layout_toEndOf="@id/refreshRateLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"/>
+
+    <!-- save refresh rate button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        android:textSize="14dp"
+        android:id="@+id/refreshRateSend"
+        android:layout_alignBottom="@+id/refreshRate"
+        android:layout_toRightOf="@+id/refreshRate"
+        android:layout_toEndOf="@+id/refreshRate"/>
+
+    <!-- weather refresh rate Label -->
+    <TextView
+        android:id="@+id/refreshWeatherRateLabel"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="@string/refreshWeatherRate_label"
+        android:lines="2"
+        android:layout_below="@+id/refreshRateLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp" />
+
+    <!-- weather refresh rate -->
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="3"
+        android:id="@+id/refreshWeatherRate"
+        android:layout_alignBottom="@id/refreshWeatherRateLabel"
+        android:layout_toRightOf="@id/refreshWeatherRateLabel"
+        android:layout_toEndOf="@id/refreshWeatherRateLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"/>
+
+    <!-- save weather refresh rate button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        android:textSize="14dp"
+        android:id="@+id/refreshWeatherRateSend"
+        android:layout_alignBottom="@+id/refreshWeatherRate"
+        android:layout_toRightOf="@+id/refreshWeatherRate"
+        android:layout_toEndOf="@+id/refreshWeatherRate"/>
+
+    <!-- location Label -->
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_label"
+        android:lines="2"
+        android:layout_below="@+id/refreshWeatherRateLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp" />
+
+    <!-- location -->
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="12"
+        android:id="@+id/location"
+        android:layout_below="@+id/locationLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp" />
+
+    <!-- save location button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        android:textSize="14dp"
+        android:id="@+id/locationSend"
+        android:layout_alignBottom="@+id/location"
+        android:layout_toRightOf="@+id/location"
+        android:layout_toEndOf="@+id/location"/>
+
+</RelativeLayout>

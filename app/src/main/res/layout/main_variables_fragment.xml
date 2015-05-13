@@ -1,7 +1,6 @@
 <RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,30 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_refresh_variables"
+        android:textSize="14dp"
         android:id="@+id/buttonRefresh"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
-    <!-- Count Label -->
-    <TextView
-        android:id="@+id/countLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/count_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <!-- Count Value -->
-    <TextView
-        android:id="@+id/count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:text=""
-        android:layout_alignTop="@id/countLabel"
-        android:layout_toRightOf="@id/countLabel"
-        android:layout_toEndOf="@id/countLabel" />
 
     <!-- Temperature Label -->
     <TextView
@@ -43,10 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/temperature_label"
-        android:layout_below="@+id/countLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
+        android:layout_marginTop="30dp" />
 
     <!-- Temperature Value -->
     <TextView
@@ -60,36 +40,118 @@
         android:layout_toRightOf="@id/temperatureLabel"
         android:layout_toEndOf="@id/temperatureLabel" />
 
-    <!-- x Label -->
+    <!-- Humidity Label -->
     <TextView
-        android:id="@+id/xLabel"
+        android:id="@+id/humidityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/X_label"
-        android:layout_below="@id/temperatureLabel"
-        android:layout_marginTop="30dp"
+        android:text="@string/humidity_label"
+        android:layout_below="@+id/temperatureLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"/>
 
-    <EditText
+    <!-- Humidity Value -->
+    <TextView
+        android:id="@+id/humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="3"
-        android:id="@+id/x"
-        android:layout_alignBottom="@id/xLabel"
-        android:layout_toRightOf="@id/xLabel"
-        android:layout_toEndOf="@id/xLabel"
         android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"/>
+        android:layout_marginStart="5dp"
+        android:text=""
+        android:layout_alignTop="@id/rainLabel"
+        android:layout_toRightOf="@id/rainLabel"
+        android:layout_toEndOf="@id/rainLabel" />
 
+    <!-- Rain Label -->
+    <TextView
+        android:id="@+id/rainLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rain_label"
+        android:layout_below="@+id/humidityLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"/>
+
+    <!-- Rain Value -->
+    <TextView
+        android:id="@+id/rain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text=""
+        android:layout_alignTop="@id/rainLabel"
+        android:layout_toRightOf="@id/rainLabel"
+        android:layout_toEndOf="@id/rainLabel" />
+
+    <!-- forecast Label -->
+    <TextView
+        android:id="@+id/forecastLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forecast_label"
+        android:layout_below="@+id/rainLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"/>
+
+    <!-- forecast Value -->
+    <TextView
+        android:id="@+id/forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text=""
+        android:layout_alignTop="@id/rainLabel"
+        android:layout_toRightOf="@id/rainLabel"
+        android:layout_toEndOf="@id/rainLabel" />
+
+    <!-- timestamp Label -->
+    <TextView
+        android:id="@+id/timestampLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/timestamp_label"
+        android:layout_below="@+id/forecastLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"/>
+
+    <!-- timestamp Value -->
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/timestampLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <!-- Update button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save_button"
-        android:id="@+id/xSend"
-        android:layout_alignBottom="@+id/x"
-        android:layout_toRightOf="@+id/x"
-        android:layout_toEndOf="@+id/x"/>
+        android:text="@string/button_refresh"
+        android:textSize="14dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/buttonUpdate"
+        android:layout_below="@+id/timestamp"
+        android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>
