@@ -16,9 +16,10 @@
     <string name="missingWifi">Por favor conectese a la red local WiFi</string>
     <string name="unabletoconnect">No se puede establecer conexión con el sistema</string>
 
-    <string name="refreshRate_label">Tasa de refresco de las variables de los sensores: </string>
+    <string name="refreshRate_label">Tasa de refresco de las variables de los sensores:</string>
     <string name="refreshWeatherRate_label">Tasa de solicitud del pronóstico meteorológico:</string>
-    <string name="location_label">Ubicación (para obtener el pronóstico meteorológico). Introducir en la forma "Ciudad, País":</string>
+    <string name="location_label">Ubicación (para obtener el pronóstico meteorológico). Introducir en la forma "City,Country" (en inglés):</string>
+    <string name="actuator_label">Riego conectado:</string>
 
     <string name="save_button">Guardar</string>
 
@@ -27,7 +28,7 @@
     <string name="tab_1">General</string>
     <string name="tab_2">Avanzado</string>
 
-    <string name="success">Success</string>
+    <string name="success">Actualizado</string>
 
 
 </resources>

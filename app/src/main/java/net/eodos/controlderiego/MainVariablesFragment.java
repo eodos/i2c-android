@@ -8,12 +8,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+//import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +32,23 @@ import java.util.HashMap;
 public class MainVariablesFragment extends Fragment {
 
     private static final String DEBUG_TAG = "HttpDebug";
-    public TextView countField;
+
     public TextView tempField;
-    public EditText xField;
-    public Button buttonRead;
-    public Button buttonX;
+    public TextView rainField;
+    public TextView humidityField;
+    public TextView forecastField;
+    public TextView timestampField;
+    public TextView actuatorField;
+    public Button buttonGet;
+    public Button buttonRequest;
 
     // JSON Node names
-    private static final String TAG_COUNT = "COUNT";
     private static final String TAG_TEMP = "TEMP";
-    private static final String TAG_X = "X";
+    private static final String TAG_RAIN = "RAIN";
+    private static final String TAG_HUMIDITY = "HUMIDITY";
+    private static final String TAG_FORECAST = "FORECAST";
+    private static final String TAG_TIMESTAMP = "TIMESTAMP";
+    private static final String TAG_ACTUATOR = "ACTUATOR";
 
     // Hashmap for ListView
     HashMap<String, String> data;
@@ -55,21 +63,34 @@ public class MainVariablesFragment extends Fragment {
         data = new HashMap<>(); // <string, string>
 
         //Referencia a controles de la interfaz
-        countField = (TextView) view.findViewById(R.id.count);
         tempField = (TextView) view.findViewById(R.id.temperature);
-        xField = (EditText) view.findViewById(R.id.x);
-        buttonRead = (Button) view.findViewById(R.id.buttonRefresh);
-        buttonX = (Button) view.findViewById(R.id.xSend);
+        rainField = (TextView) view.findViewById(R.id.rain);
+        humidityField = (TextView) view.findViewById(R.id.humidity);
+        forecastField = (TextView) view.findViewById(R.id.forecast);
+        timestampField = (TextView) view.findViewById(R.id.timestamp);
+        actuatorField = (TextView) view.findViewById(R.id.actuator);
+        buttonGet = (Button) view.findViewById(R.id.buttonGet);
+        buttonRequest = (Button) view.findViewById(R.id.buttonRequest);
 
-        buttonRead.setOnClickListener(new View.OnClickListener() {
+        buttonGet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                readVariables();
+                readLogVariables();
             }
         });
 
-        buttonX.setOnClickListener(new View.OnClickListener() {
+        buttonRequest.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                writeXVariable();
+                openSemaphore();
+
+                // Wait 500 ms
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        readLogVariables();
+                    }
+                }, 500);
+
+
             }
         });
 
@@ -83,16 +104,32 @@ public class MainVariablesFragment extends Fragment {
 
     // When user clicks button, calls AsyncTask.
     // Before attempting to fetch the URL, makes sure that there is a network connection.
-    public void readVariables() {
+   /* public void readVariables() {
         String[] vars = {"COUNT","TEMP","X"};
         String URL = composeReadURL(vars);
         if (checkConnection()) {
             Log.d(DEBUG_TAG, "Connecting to: " + URL);
             new downloadVariablesTask().execute(URL);
         }
+    }*/
+
+    public void readLogVariables() {
+        String URL = "http://192.168.2.200/cgi-bin/read_log.cgi";
+        if (checkConnection()) {
+            Log.d(DEBUG_TAG, "Connecting to: " + URL);
+            new downloadVariablesTask().execute(URL);
+        }
     }
 
-    public void writeXVariable() {
+    public void openSemaphore() {
+        String URL = "http://192.168.2.200/cgi-bin/open_semaphore.cgi";
+        if (checkConnection()) {
+            Log.d(DEBUG_TAG, "Connecting to: " + URL);
+            new downloadVariablesTask().execute(URL);
+        }
+    }
+
+    /*public void writeXVariable() {
         String var = "X";
         writeVariable(var, xField);
     }
@@ -104,9 +141,9 @@ public class MainVariablesFragment extends Fragment {
             Log.d(DEBUG_TAG, "Connecting to: " + URL);
             new writeVariableTask().execute(URL);
         }
-    }
+    }*/
 
-    public String composeReadURL(String[] vars) {
+    /*public String composeReadURL(String[] vars) {
         String URL = "http://192.168.2.200/cgi-bin/read.cgi?";
         for (int i=0; i<vars.length; i++) {
             if (i==0) {
@@ -117,11 +154,11 @@ public class MainVariablesFragment extends Fragment {
             }
         }
         return URL;
-    }
+    }*/
 
-    public String composeWriteURL(String var, String value) {
+    /*public String composeWriteURL(String var, String value) {
         return "http://192.168.2.200/cgi-bin/write.cgi?"+var+"="+value;
-    }
+    }*/
 
     public boolean checkConnection() {
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -159,17 +196,30 @@ public class MainVariablesFragment extends Fragment {
         @Override
         protected void onPostExecute(HashMap data) {
             if (data != null) {
-                String count = (String) data.get(TAG_COUNT);
+                // Show toast
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        showSuccessToast();
+                    }
+                });
+                
                 String temperature = (String) data.get(TAG_TEMP);
-                String x = (String) data.get(TAG_X);
-                countField.setText(count);
+                String rain = (String) data.get(TAG_RAIN);
+                String humidity = (String) data.get(TAG_HUMIDITY);
+                String forecast = (String) data.get(TAG_FORECAST);
+                String timestamp = (String) data.get(TAG_TIMESTAMP);
+                String actuator = (String) data.get(TAG_ACTUATOR);
                 tempField.setText(temperature);
-                xField.setText(x);
+                rainField.setText(rain);
+                humidityField.setText(humidity);
+                forecastField.setText(forecast);
+                actuatorField.setText(actuator);
+                timestampField.setText(timestamp);
             }
         }
     }
 
-    public class writeVariableTask extends AsyncTask<String, Void, HashMap> {
+    /*public class writeVariableTask extends AsyncTask<String, Void, HashMap> {
         @Override
         protected HashMap doInBackground(String... params) {
             // params comes from the execute() call: params[0] is the url.
@@ -184,7 +234,7 @@ public class MainVariablesFragment extends Fragment {
                 return null;
             }
         }
-    }
+    }*/
 
     // Given a URL, establishes an HttpUrlConnection and retrieves
     // the web page content as a InputStream, which it returns as
@@ -203,13 +253,6 @@ public class MainVariablesFragment extends Fragment {
             conn.connect();
             int response = conn.getResponseCode();
             Log.d(DEBUG_TAG, "The response is: " + response);
-
-            // Show toast
-            getActivity().runOnUiThread(new Runnable() {
-                public void run() {
-                    showSuccessToast();
-                }
-            });
 
             is = conn.getInputStream();
 
@@ -244,17 +287,32 @@ public class MainVariablesFragment extends Fragment {
 
             // Convert the String to a HashMap object
             JSONObject serverJSON = new JSONObject(result.toString());
-            String count = serverJSON.getString(TAG_COUNT);
-            String temp = serverJSON.getString(TAG_TEMP);
-            String x = serverJSON.getString(TAG_X);
+            String temp = serverJSON.getString(TAG_TEMP) + " " + (char)186 + "C";
+            String rain = serverJSON.getString(TAG_RAIN);
+            if (Integer.parseInt(rain) == 0) rain = "No";
+            else if (Integer.parseInt(rain) == 1) rain = "Si";
+            String humidity = serverJSON.getString(TAG_HUMIDITY) + "% HR";
+            String forecast = serverJSON.getString(TAG_FORECAST);
+            if (Integer.parseInt(forecast) == 0) forecast = "Hoy";
+            else if (Integer.parseInt(forecast) == 1) forecast = "Ma" + (char)241 + "ana";
+            else if (Integer.parseInt(forecast) == 2) forecast = "Dentro de dos d" + (char)237 + "as";
+            else if (Integer.parseInt(forecast) == 3) forecast = "Dentro de tres d" + (char)237 + "as";
+            else if (Integer.parseInt(forecast) == -1) forecast = "No hay precipitaciones previstas en tres d" + (char)237 + "as";
+            String actuator = serverJSON.getString(TAG_ACTUATOR);
+            if (Integer.parseInt(actuator) == 0) actuator = "No";
+            else if (Integer.parseInt(actuator) == 1) actuator = "S" + (char)237;
+            String timestamp = serverJSON.getString(TAG_TIMESTAMP);
 
             // New temp HashMap
             HashMap<String, String> data = new HashMap<>();
 
             // Adding each child node to Hashmap key => value
-            data.put(TAG_COUNT, count);
             data.put(TAG_TEMP, temp);
-            data.put(TAG_X, x);
+            data.put(TAG_RAIN, rain);
+            data.put(TAG_HUMIDITY, humidity);
+            data.put(TAG_FORECAST, forecast);
+            data.put(TAG_ACTUATOR, actuator);
+            data.put(TAG_TIMESTAMP, timestamp);
 
             // Return the Hashmap
             return data;

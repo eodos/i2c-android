@@ -6,13 +6,13 @@
     android:orientation="vertical"
     android:id="@+id/layout">
 
-    <!-- Refresh button -->
+    <!-- Get button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_refresh_variables"
         android:textSize="14dp"
-        android:id="@+id/buttonRefresh"
+        android:id="@+id/buttonGet"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/temperature_label"
+        android:textStyle="bold"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
@@ -46,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/humidity_label"
+        android:textStyle="bold"
         android:layout_below="@+id/temperatureLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -61,9 +63,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
         android:text=""
-        android:layout_alignTop="@id/rainLabel"
-        android:layout_toRightOf="@id/rainLabel"
-        android:layout_toEndOf="@id/rainLabel" />
+        android:layout_alignTop="@id/humidityLabel"
+        android:layout_toRightOf="@id/humidityLabel"
+        android:layout_toEndOf="@id/humidityLabel" />
 
     <!-- Rain Label -->
     <TextView
@@ -71,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rain_label"
+        android:textStyle="bold"
         android:layout_below="@+id/humidityLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -96,6 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forecast_label"
+        android:textStyle="bold"
         android:layout_below="@+id/rainLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -108,12 +112,40 @@
         android:id="@+id/forecast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
         android:text=""
-        android:layout_alignTop="@id/rainLabel"
-        android:layout_toRightOf="@id/rainLabel"
-        android:layout_toEndOf="@id/rainLabel" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/forecastLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <!-- actuator Label -->
+    <TextView
+        android:id="@+id/actuatorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/actuator_label"
+        android:textStyle="bold"
+        android:layout_below="@+id/forecast"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"/>
+
+    <!-- actuator Value -->
+    <TextView
+        android:id="@+id/actuator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/actuatorLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
 
     <!-- timestamp Label -->
     <TextView
@@ -121,7 +153,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/timestamp_label"
-        android:layout_below="@+id/forecastLabel"
+        android:textStyle="bold"
+        android:layout_below="@+id/actuator"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
@@ -141,14 +174,14 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp" />
 
-    <!-- Update button -->
+    <!-- Request new values button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_refresh"
         android:textSize="14dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/buttonUpdate"
+        android:id="@+id/buttonRequest"
         android:layout_below="@+id/timestamp"
         android:layout_centerHorizontal="true" />
 
