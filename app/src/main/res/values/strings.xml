@@ -6,6 +6,7 @@
 
     <string name="button_refresh_variables">Obtener últimos valores</string>
     <string name="button_refresh">Solicitar nuevos valores</string>
+    <string name="button_refresh_params">Obtener parámetros</string>
 
     <string name="temperature_label">Temperatura:</string>
     <string name="humidity_label">Humedad:</string>
@@ -16,8 +17,8 @@
     <string name="missingWifi">Por favor conectese a la red local WiFi</string>
     <string name="unabletoconnect">No se puede establecer conexión con el sistema</string>
 
-    <string name="refreshRate_label">Tasa de refresco de las variables de los sensores:</string>
-    <string name="refreshWeatherRate_label">Tasa de solicitud del pronóstico meteorológico:</string>
+    <string name="refreshRate_label">Tasa de refresco de las variables de los sensores (segundos):</string>
+    <string name="refreshForecastRate_label">Tasa de solicitud del pronóstico meteorológico (minutos):</string>
     <string name="location_label">Ubicación (para obtener el pronóstico meteorológico). Introducir en la forma "City,Country" (en inglés):</string>
     <string name="actuator_label">Riego conectado:</string>
 
@@ -29,6 +30,7 @@
     <string name="tab_2">Avanzado</string>
 
     <string name="success">Actualizado</string>
+    <string name="saved">Guardado</string>
 
 
 </resources>

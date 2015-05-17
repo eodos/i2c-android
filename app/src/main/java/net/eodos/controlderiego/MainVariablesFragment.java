@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-//import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -108,15 +107,6 @@ public class MainVariablesFragment extends Fragment {
 
     // When user clicks button, calls AsyncTask.
     // Before attempting to fetch the URL, makes sure that there is a network connection.
-   /* public void readVariables() {
-        String[] vars = {"COUNT","TEMP","X"};
-        String URL = composeReadURL(vars);
-        if (checkConnection()) {
-            Log.d(DEBUG_TAG, "Connecting to: " + URL);
-            new downloadVariablesTask().execute(URL);
-        }
-    }*/
-
     public void readLogVariables() {
         String URL = "http://192.168.2.200/cgi-bin/read_log.cgi";
         if (checkConnection()) {
@@ -132,37 +122,6 @@ public class MainVariablesFragment extends Fragment {
             new downloadVariablesTask().execute(URL);
         }
     }
-
-    /*public void writeXVariable() {
-        String var = "X";
-        writeVariable(var, xField);
-    }
-
-    public void writeVariable(String var, EditText editText) {
-        String value = editText.getText().toString();
-        String URL = composeWriteURL(var, value);
-        if (checkConnection()) {
-            Log.d(DEBUG_TAG, "Connecting to: " + URL);
-            new writeVariableTask().execute(URL);
-        }
-    }*/
-
-    /*public String composeReadURL(String[] vars) {
-        String URL = "http://192.168.2.200/cgi-bin/read.cgi?";
-        for (int i=0; i<vars.length; i++) {
-            if (i==0) {
-                URL = URL + "var=" + vars[i];
-            }
-            else {
-                URL = URL + "&var=" + vars[i];
-            }
-        }
-        return URL;
-    }*/
-
-    /*public String composeWriteURL(String var, String value) {
-        return "http://192.168.2.200/cgi-bin/write.cgi?"+var+"="+value;
-    }*/
 
     public boolean checkConnection() {
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -222,23 +181,6 @@ public class MainVariablesFragment extends Fragment {
             }
         }
     }
-
-    /*public class writeVariableTask extends AsyncTask<String, Void, HashMap> {
-        @Override
-        protected HashMap doInBackground(String... params) {
-            // params comes from the execute() call: params[0] is the url.
-            try {
-                return downloadUrl(params[0],false);
-            } catch (IOException e) {
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        showUnableToConnectDialog();
-                    }
-                });
-                return null;
-            }
-        }
-    }*/
 
     // Given a URL, establishes an HttpUrlConnection and retrieves
     // the web page content as a InputStream, which it returns as

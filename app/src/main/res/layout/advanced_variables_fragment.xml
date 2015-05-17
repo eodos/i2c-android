@@ -9,10 +9,10 @@
     <!-- sensors refresh rate Label -->
     <TextView
         android:id="@+id/refreshRateLabel"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="@string/refreshRate_label"
-        android:lines="2"
+        android:lines="3"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
@@ -24,7 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:ems="3"
+        android:ems="5"
+        android:textSize="14sp"
         android:id="@+id/refreshRate"
         android:layout_alignBottom="@id/refreshRateLabel"
         android:layout_toRightOf="@id/refreshRateLabel"
@@ -43,30 +44,31 @@
         android:layout_toRightOf="@+id/refreshRate"
         android:layout_toEndOf="@+id/refreshRate"/>
 
-    <!-- weather refresh rate Label -->
+    <!-- forecast refresh rate Label -->
     <TextView
-        android:id="@+id/refreshWeatherRateLabel"
+        android:id="@+id/refreshForecastRateLabel"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="@string/refreshWeatherRate_label"
-        android:lines="2"
-        android:layout_below="@+id/refreshRateLabel"
+        android:text="@string/refreshForecastRate_label"
+        android:lines="3"
+        android:layout_below="@+id/refreshRate"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp" />
 
-    <!-- weather refresh rate -->
+    <!-- forecast refresh rate -->
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:ems="3"
-        android:id="@+id/refreshWeatherRate"
-        android:layout_alignBottom="@id/refreshWeatherRateLabel"
-        android:layout_toRightOf="@id/refreshWeatherRateLabel"
-        android:layout_toEndOf="@id/refreshWeatherRateLabel"
+        android:textSize="14sp"
+        android:ems="5"
+        android:id="@+id/refreshForecastRate"
+        android:layout_alignBottom="@id/refreshForecastRateLabel"
+        android:layout_toRightOf="@id/refreshForecastRateLabel"
+        android:layout_toEndOf="@id/refreshForecastRateLabel"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"/>
 
@@ -77,9 +79,9 @@
         android:text="@string/save_button"
         android:textSize="14sp"
         android:id="@+id/refreshWeatherRateSend"
-        android:layout_alignBottom="@+id/refreshWeatherRate"
-        android:layout_toRightOf="@+id/refreshWeatherRate"
-        android:layout_toEndOf="@+id/refreshWeatherRate"/>
+        android:layout_alignBottom="@+id/refreshForecastRate"
+        android:layout_toRightOf="@+id/refreshForecastRate"
+        android:layout_toEndOf="@+id/refreshForecastRate"/>
 
     <!-- location Label -->
     <TextView
@@ -88,7 +90,7 @@
         android:layout_height="wrap_content"
         android:text="@string/location_label"
         android:lines="2"
-        android:layout_below="@+id/refreshWeatherRateLabel"
+        android:layout_below="@+id/refreshForecastRateLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
@@ -101,12 +103,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:ems="12"
+        android:text=""
+        android:ems="15"
         android:id="@+id/location"
+        android:textSize="14sp"
         android:layout_below="@+id/locationLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginRight="10dp" />
@@ -126,9 +130,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_refresh_variables"
+        android:text="@string/button_refresh_params"
         android:textSize="14sp"
-        android:id="@+id/buttonRefresh"
+        android:id="@+id/buttonGet"
         android:layout_below="@id/location"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true" />
