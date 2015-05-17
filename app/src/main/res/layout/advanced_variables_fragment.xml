@@ -6,16 +6,6 @@
     android:orientation="vertical"
     android:id="@+id/layout">
 
-    <!-- Refresh button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_refresh_variables"
-        android:textSize="14dp"
-        android:id="@+id/buttonRefresh"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
     <!-- sensors refresh rate Label -->
     <TextView
         android:id="@+id/refreshRateLabel"
@@ -27,7 +17,7 @@
         android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="20dp" />
 
     <!-- sensors refresh rate -->
     <EditText
@@ -47,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_button"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:id="@+id/refreshRateSend"
         android:layout_alignBottom="@+id/refreshRate"
         android:layout_toRightOf="@+id/refreshRate"
@@ -65,7 +55,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="20dp" />
 
     <!-- weather refresh rate -->
     <EditText
@@ -85,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_button"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:id="@+id/refreshWeatherRateSend"
         android:layout_alignBottom="@+id/refreshWeatherRate"
         android:layout_toRightOf="@+id/refreshWeatherRate"
@@ -104,7 +94,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="20dp" />
 
     <!-- location -->
     <EditText
@@ -116,6 +106,7 @@
         android:layout_below="@+id/locationLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginRight="10dp" />
@@ -125,10 +116,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_button"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:id="@+id/locationSend"
         android:layout_alignBottom="@+id/location"
         android:layout_toRightOf="@+id/location"
-        android:layout_toEndOf="@+id/location"/>
+        android:layout_toEndOf="@+id/location" />
+
+    <!-- Refresh button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_refresh_variables"
+        android:textSize="14sp"
+        android:id="@+id/buttonRefresh"
+        android:layout_below="@id/location"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -6,16 +6,6 @@
     android:orientation="vertical"
     android:id="@+id/layout">
 
-    <!-- Get button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_refresh_variables"
-        android:textSize="14dp"
-        android:id="@+id/buttonGet"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
     <!-- Temperature Label -->
     <TextView
         android:id="@+id/temperatureLabel"
@@ -27,7 +17,7 @@
         android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="20dp" />
 
     <!-- Temperature Value -->
     <TextView
@@ -53,7 +43,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <!-- Humidity Value -->
     <TextView
@@ -79,7 +69,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <!-- Rain Value -->
     <TextView
@@ -105,7 +95,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <!-- forecast Value -->
     <TextView
@@ -132,7 +122,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <!-- actuator Value -->
     <TextView
@@ -159,7 +149,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <!-- timestamp Value -->
     <TextView
@@ -179,12 +169,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_refresh"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:layout_marginTop="10dp"
         android:id="@+id/buttonRequest"
-        android:layout_below="@+id/timestamp"
+        android:layout_below="@+id/buttonGet"
         android:layout_centerHorizontal="true" />
 
+    <!-- Get button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_refresh_variables"
+        android:textSize="14sp"
+        android:id="@+id/buttonGet"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/timestamp"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

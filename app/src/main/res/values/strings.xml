@@ -4,7 +4,7 @@
     <string name="action_settings">Opciones</string>
     <string name="title_activity_main">MainActivity</string>
 
-    <string name="button_refresh_variables">Obtener valores</string>
+    <string name="button_refresh_variables">Obtener últimos valores</string>
     <string name="button_refresh">Solicitar nuevos valores</string>
 
     <string name="temperature_label">Temperatura:</string>

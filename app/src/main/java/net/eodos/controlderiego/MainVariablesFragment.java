@@ -98,8 +98,12 @@ public class MainVariablesFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) { super.onSaveInstanceState(outState); }
+
+    @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
+        readLogVariables();
     }
 
     // When user clicks button, calls AsyncTask.
@@ -202,7 +206,7 @@ public class MainVariablesFragment extends Fragment {
                         showSuccessToast();
                     }
                 });
-                
+
                 String temperature = (String) data.get(TAG_TEMP);
                 String rain = (String) data.get(TAG_RAIN);
                 String humidity = (String) data.get(TAG_HUMIDITY);
