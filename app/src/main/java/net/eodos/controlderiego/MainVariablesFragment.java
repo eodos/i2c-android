@@ -48,6 +48,7 @@ public class MainVariablesFragment extends Fragment {
     private static final String TAG_FORECAST = "FORECAST";
     private static final String TAG_TIMESTAMP = "TIMESTAMP";
     private static final String TAG_ACTUATOR = "ACTUATOR";
+    private static final String TAG_TIME_ACTUATOR = "TIME_ACTUATOR";
 
     // Hashmap for ListView
     HashMap<String, String> data;
@@ -233,20 +234,55 @@ public class MainVariablesFragment extends Fragment {
 
             // Convert the String to a HashMap object
             JSONObject serverJSON = new JSONObject(result.toString());
+
+                // Temperature
             String temp = serverJSON.getString(TAG_TEMP) + " " + (char)186 + "C";
+
+                // Rain
             String rain = serverJSON.getString(TAG_RAIN);
             if (Integer.parseInt(rain) == 0) rain = "No";
             else if (Integer.parseInt(rain) == 1) rain = "Si";
+
+                // Humidity
             String humidity = serverJSON.getString(TAG_HUMIDITY) + "% HR";
+
+                // Weather forecast
             String forecast = serverJSON.getString(TAG_FORECAST);
             if (Integer.parseInt(forecast) == 0) forecast = "Hoy";
             else if (Integer.parseInt(forecast) == 1) forecast = "Ma" + (char)241 + "ana";
             else if (Integer.parseInt(forecast) == 2) forecast = "Dentro de dos d" + (char)237 + "as";
             else if (Integer.parseInt(forecast) == 3) forecast = "Dentro de tres d" + (char)237 + "as";
-            else if (Integer.parseInt(forecast) == -1) forecast = "No hay precipitaciones previstas en tres d" + (char)237 + "as";
+            else if (Integer.parseInt(forecast) == 4) forecast = "No hay precipitaciones previstas en tres d" + (char)237 + "as";
+            else if (Integer.parseInt(forecast) == -1) forecast = "No puede obtenerse el pron" + (char)243 + "stico";
+
+                // Actuator state and time on / off
             String actuator = serverJSON.getString(TAG_ACTUATOR);
+            String time_actuator = serverJSON.getString(TAG_TIME_ACTUATOR);
+            Integer seconds; Integer minutes = 0; Integer hours = 0; Integer days = 0;
+            if (Integer.parseInt(time_actuator) > 60) {
+                seconds = Integer.parseInt(time_actuator)%60;
+                minutes = Integer.parseInt(time_actuator)/60;
+                if (minutes > 60) {
+                    hours = minutes/60;
+                    minutes = minutes%60;
+                    if (hours > 24) {
+                        days = hours/24;
+                        hours = hours%24;
+                    }
+                }
+            }
+            else {seconds = Integer.parseInt(time_actuator);}
+            String time;
+            if (days > 0) time = days.toString() + " d" + (char)237 + "as, " + hours.toString() + " horas, " + minutes.toString() + " minutos, " + seconds.toString() + " segundos";
+            else if (hours > 0) time = hours.toString() + " horas, " + minutes.toString() + " minutos, " + seconds.toString() + " segundos";
+            else if (minutes > 0) time = minutes.toString() + " minutos, " + seconds.toString() + " segundos";
+            else time = seconds.toString() + " segundos";
+
             if (Integer.parseInt(actuator) == 0) actuator = "No";
             else if (Integer.parseInt(actuator) == 1) actuator = "S" + (char)237;
+            actuator += ", desde hace " + time;
+
+                // Timestamp
             String timestamp = serverJSON.getString(TAG_TIMESTAMP);
 
             // New temp HashMap
