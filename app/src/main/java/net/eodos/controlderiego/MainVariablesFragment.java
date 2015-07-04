@@ -51,7 +51,7 @@ public class MainVariablesFragment extends Fragment {
     private static final String TAG_TIME_ACTUATOR = "TIME_ACTUATOR";
 
     // Hashmap for ListView
-    HashMap<String, String> data;
+    HashMap <String, String> data;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,8 +89,6 @@ public class MainVariablesFragment extends Fragment {
                         readLogVariables();
                     }
                 }, 500);
-
-
             }
         });
 
@@ -118,6 +116,22 @@ public class MainVariablesFragment extends Fragment {
 
     public void openSemaphore() {
         String URL = "http://192.168.2.200/cgi-bin/open_semaphore.cgi";
+        if (checkConnection()) {
+            Log.d(DEBUG_TAG, "Connecting to: " + URL);
+            new downloadVariablesTask().execute(URL);
+        }
+    }
+
+    public void activarActuador() {
+        String URL = "http://192.168.2.200/cgi-bin/activar_actuador.cgi";
+        if (checkConnection()) {
+            Log.d(DEBUG_TAG, "Connecting to: " + URL);
+            new downloadVariablesTask().execute(URL);
+        }
+    }
+
+    public void desconectarActuador() {
+        String URL = "http://192.168.2.200/cgi-bin/desconectar_actuador.cgi";
         if (checkConnection()) {
             Log.d(DEBUG_TAG, "Connecting to: " + URL);
             new downloadVariablesTask().execute(URL);
@@ -236,15 +250,20 @@ public class MainVariablesFragment extends Fragment {
             JSONObject serverJSON = new JSONObject(result.toString());
 
                 // Temperature
-            String temp = serverJSON.getString(TAG_TEMP) + " " + (char)186 + "C";
+            String temp = serverJSON.getString(TAG_TEMP);
+            if (Integer.parseInt(temp) == -1) temp = "Error en el sensor";
+            else temp += " " + (char)186 + "C";
 
                 // Rain
             String rain = serverJSON.getString(TAG_RAIN);
             if (Integer.parseInt(rain) == 0) rain = "No";
-            else if (Integer.parseInt(rain) == 1) rain = "Si";
+            else if (Integer.parseInt(rain) == 1) rain = "S" + (char)237;
+            else if (Integer.parseInt(rain) == -1) rain = "Error en el sensor";
 
                 // Humidity
-            String humidity = serverJSON.getString(TAG_HUMIDITY) + "% HR";
+            String humidity = serverJSON.getString(TAG_HUMIDITY);
+            if (Integer.parseInt(humidity) == -1) humidity = "Error en el sensor";
+            else humidity += "% HR";
 
                 // Weather forecast
             String forecast = serverJSON.getString(TAG_FORECAST);

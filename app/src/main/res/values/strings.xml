@@ -31,6 +31,8 @@
 
     <string name="success">Actualizado</string>
     <string name="saved">Guardado</string>
+    <string name="activar_riego">Activar riego 10s</string>
+    <string name="desconectar_riego">Desconectar riego 10s</string>
 
 
 </resources>
