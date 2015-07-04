@@ -251,7 +251,7 @@ public class MainVariablesFragment extends Fragment {
 
                 // Temperature
             String temp = serverJSON.getString(TAG_TEMP);
-            if (Integer.parseInt(temp) == -1) temp = "Error en el sensor";
+            if (temp == "-1") temp = "Error en el sensor";
             else temp += " " + (char)186 + "C";
 
                 // Rain

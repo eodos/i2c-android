@@ -33,6 +33,13 @@
     <string name="saved">Guardado</string>
     <string name="activar_riego">Activar riego 10s</string>
     <string name="desconectar_riego">Desconectar riego 10s</string>
+    <string name="min_humidity">Humedad a la que encender el riego en condiciones normales:</string>
+    <string name="humidity_min_forecast">Humedad a la que encender el riego si se esperan precipitaciones en 1 día o está lloviendo:</string>
+    <string name="min_critical_humidity">Humedad crítica a la que encender el riego bajo cualquier circunstancia:</string>
+    <string name="max_humidity">Humedad a la que desconectar el riego:</string>
+    <string name="humidity_time">Si no funciona el sensor de humedad y no va a llover, conectar el riego cada (en horas):</string>
+    <string name="humidity_time_forecast">Si no funciona el sensor de humedad pero va a llover, conectar el riego cada (en horas):</string>
+    <string name="humidity_time_off">Si no funciona el sensor de humedad, desconectar el riego tras (en minutos):</string>
 
 
 </resources>

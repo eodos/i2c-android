@@ -1,140 +1,418 @@
-<RelativeLayout
-
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/layout">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <!-- sensors refresh rate Label -->
-    <TextView
-        android:id="@+id/refreshRateLabel"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:text="@string/refreshRate_label"
-        android:lines="3"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout">
 
-    <!-- sensors refresh rate -->
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="5"
-        android:textSize="14sp"
-        android:id="@+id/refreshRate"
-        android:layout_alignBottom="@id/refreshRateLabel"
-        android:layout_toRightOf="@id/refreshRateLabel"
-        android:layout_toEndOf="@id/refreshRateLabel"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"/>
+        <!-- sensors refresh rate Label -->
+        <TextView
+            android:id="@+id/refreshRateLabel"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/refreshRate_label"
+            android:lines="3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
 
-    <!-- save refresh rate button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save_button"
-        android:textSize="14sp"
-        android:id="@+id/refreshRateSend"
-        android:layout_alignBottom="@+id/refreshRate"
-        android:layout_toRightOf="@+id/refreshRate"
-        android:layout_toEndOf="@+id/refreshRate"/>
+        <!-- sensors refresh rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/refreshRate"
+            android:layout_alignBottom="@id/refreshRateLabel"
+            android:layout_toRightOf="@id/refreshRateLabel"
+            android:layout_toEndOf="@id/refreshRateLabel"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
 
-    <!-- forecast refresh rate Label -->
-    <TextView
-        android:id="@+id/refreshForecastRateLabel"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:text="@string/refreshForecastRate_label"
-        android:lines="3"
-        android:layout_below="@+id/refreshRate"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp" />
+        <!-- save refresh rate button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/refreshRateSend"
+            android:layout_alignBottom="@+id/refreshRate"
+            android:layout_toRightOf="@+id/refreshRate"
+            android:layout_toEndOf="@+id/refreshRate"/>
 
-    <!-- forecast refresh rate -->
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:textSize="14sp"
-        android:ems="5"
-        android:id="@+id/refreshForecastRate"
-        android:layout_alignBottom="@id/refreshForecastRateLabel"
-        android:layout_toRightOf="@id/refreshForecastRateLabel"
-        android:layout_toEndOf="@id/refreshForecastRateLabel"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"/>
+        <!-- forecast refresh rate Label -->
+        <TextView
+            android:id="@+id/refreshForecastRateLabel"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/refreshForecastRate_label"
+            android:lines="3"
+            android:layout_below="@+id/refreshRate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp" />
 
-    <!-- save weather refresh rate button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save_button"
-        android:textSize="14sp"
-        android:id="@+id/refreshWeatherRateSend"
-        android:layout_alignBottom="@+id/refreshForecastRate"
-        android:layout_toRightOf="@+id/refreshForecastRate"
-        android:layout_toEndOf="@+id/refreshForecastRate"/>
+        <!-- forecast refresh rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textSize="14sp"
+            android:ems="5"
+            android:id="@+id/refreshForecastRate"
+            android:layout_alignBottom="@id/refreshForecastRateLabel"
+            android:layout_toRightOf="@id/refreshForecastRateLabel"
+            android:layout_toEndOf="@id/refreshForecastRateLabel"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
 
-    <!-- location Label -->
-    <TextView
-        android:id="@+id/locationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/location_label"
-        android:lines="2"
-        android:layout_below="@+id/refreshForecastRateLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp" />
+        <!-- save weather refresh rate button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/refreshWeatherRateSend"
+            android:layout_alignBottom="@+id/refreshForecastRate"
+            android:layout_toRightOf="@+id/refreshForecastRate"
+            android:layout_toEndOf="@+id/refreshForecastRate"/>
 
-    <!-- location -->
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:text=""
-        android:ems="15"
-        android:id="@+id/location"
-        android:textSize="14sp"
-        android:layout_below="@+id/locationLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginRight="10dp" />
+        <!-- location Label -->
+        <TextView
+            android:id="@+id/locationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/location_label"
+            android:lines="2"
+            android:layout_below="@+id/refreshForecastRateLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp" />
 
-    <!-- save location button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save_button"
-        android:textSize="14sp"
-        android:id="@+id/locationSend"
-        android:layout_alignBottom="@+id/location"
-        android:layout_toRightOf="@+id/location"
-        android:layout_toEndOf="@+id/location" />
+        <!-- location -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text=""
+            android:ems="15"
+            android:id="@+id/location"
+            android:textSize="14sp"
+            android:layout_below="@+id/locationLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp" />
 
-    <!-- Refresh button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_refresh_params"
-        android:textSize="14sp"
-        android:id="@+id/buttonGet"
-        android:layout_below="@id/location"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true" />
+        <!-- save location button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/locationSend"
+            android:layout_alignBottom="@+id/location"
+            android:layout_toRightOf="@+id/location"
+            android:layout_toEndOf="@+id/location" />
 
-</RelativeLayout>
+        <!-- min humidity Label -->
+        <TextView
+            android:id="@+id/humidity_min_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/min_humidity"
+            android:lines="3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/location"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- min humidity rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/min_humidity"
+            android:layout_alignBottom="@id/humidity_min_label"
+            android:layout_toRightOf="@id/humidity_min_label"
+            android:layout_toEndOf="@id/humidity_min_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity min button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_min_send"
+            android:layout_alignBottom="@+id/min_humidity"
+            android:layout_toRightOf="@+id/min_humidity"
+            android:layout_toEndOf="@+id/min_humidity"/>
+
+        <!-- min humidity when forecast Label -->
+        <TextView
+            android:id="@+id/humidity_min_forecast_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_min_forecast"
+            android:lines="4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/humidity_min_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- min humidity forecast rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/min_forecast_humidity"
+            android:layout_alignBottom="@id/humidity_min_forecast_label"
+            android:layout_toRightOf="@id/humidity_min_forecast_label"
+            android:layout_toEndOf="@id/humidity_min_forecast_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity min forecast button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_min_forecast_send"
+            android:layout_alignBottom="@+id/min_forecast_humidity"
+            android:layout_toRightOf="@+id/min_forecast_humidity"
+            android:layout_toEndOf="@+id/min_forecast_humidity"/>
+
+        <!-- min humidity critical Label -->
+        <TextView
+            android:id="@+id/humidity_min_critical_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/min_critical_humidity"
+            android:lines="3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/humidity_min_forecast_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- min humidity critical rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/min_critical_humidity"
+            android:layout_alignBottom="@id/humidity_min_critical_label"
+            android:layout_toRightOf="@id/humidity_min_critical_label"
+            android:layout_toEndOf="@id/humidity_min_critical_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity min critical button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_min_critical_send"
+            android:layout_alignBottom="@+id/min_critical_humidity"
+            android:layout_toRightOf="@+id/min_critical_humidity"
+            android:layout_toEndOf="@+id/min_critical_humidity"/>
+
+        <!-- max humidity Label -->
+        <TextView
+            android:id="@+id/humidity_max_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/max_humidity"
+            android:lines="2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/humidity_min_critical_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- max humidity rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/max_humidity"
+            android:layout_alignBottom="@id/humidity_max_label"
+            android:layout_toRightOf="@id/humidity_max_label"
+            android:layout_toEndOf="@id/humidity_max_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity min critical button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_max_send"
+            android:layout_alignBottom="@+id/max_humidity"
+            android:layout_toRightOf="@+id/max_humidity"
+            android:layout_toEndOf="@+id/max_humidity"/>
+
+        <!-- humidity time Label -->
+        <TextView
+            android:id="@+id/humidity_time_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_time"
+            android:lines="4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/humidity_max_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- humidity time rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/humidity_time"
+            android:layout_alignBottom="@id/humidity_time_label"
+            android:layout_toRightOf="@id/humidity_time_label"
+            android:layout_toEndOf="@id/humidity_time_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity min critical button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_time_send"
+            android:layout_alignBottom="@+id/humidity_time"
+            android:layout_toRightOf="@+id/humidity_time"
+            android:layout_toEndOf="@+id/humidity_time"/>
+
+        <!-- humidity time forecast Label -->
+        <TextView
+            android:id="@+id/humidity_time_forecast_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_time_forecast"
+            android:lines="4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/humidity_time_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- humidity time rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/humidity_time_forecast"
+            android:layout_alignBottom="@id/humidity_time_forecast_label"
+            android:layout_toRightOf="@id/humidity_time_forecast_label"
+            android:layout_toEndOf="@id/humidity_time_forecast_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity min critical button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_time_forecast_send"
+            android:layout_alignBottom="@+id/humidity_time_forecast"
+            android:layout_toRightOf="@+id/humidity_time_forecast"
+            android:layout_toEndOf="@+id/humidity_time_forecast"/>
+
+        <!-- humidity time off Label -->
+        <TextView
+            android:id="@+id/humidity_time_off_label"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_time_off"
+            android:lines="3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/humidity_time_forecast_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- humidity time off rate -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:textSize="14sp"
+            android:id="@+id/humidity_time_off"
+            android:layout_alignBottom="@id/humidity_time_off_label"
+            android:layout_toRightOf="@id/humidity_time_off_label"
+            android:layout_toEndOf="@id/humidity_time_off_label"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <!-- save humidity time off button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:textSize="14sp"
+            android:id="@+id/humidity_time_off_send"
+            android:layout_alignBottom="@+id/humidity_time_off"
+            android:layout_toRightOf="@+id/humidity_time_off"
+            android:layout_toEndOf="@+id/humidity_time_off"/>
+
+        <!-- Refresh button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_refresh_params"
+            android:textSize="14sp"
+            android:id="@+id/buttonGet"
+            android:layout_below="@id/humidity_time_off"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</ScrollView>
