@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,16 +36,37 @@ public class AdvancedVariablesFragment extends Fragment {
     public TextView refreshField;
     public TextView forecastField;
     public TextView locationField;
+    public TextView humidityField;
+    public TextView humidityForecastField;
+    public TextView humidityCriticalField;
+    public TextView humidityOffField;
+    public TextView humidityTimeField;
+    public TextView humidityTimeForecastField;
+    public TextView humidityTimeOffField;
 
     public Button buttonGet;
     public Button buttonRefreshRate;
     public Button buttonForecastRate;
     public Button buttonLocation;
+    public Button humidityButton;
+    public Button humidityForecastButton;
+    public Button humidityCriticalButton;
+    public Button humidityOffButton;
+    public Button humidityTimeButton;
+    public Button humidityTimeForecastButton;
+    public Button humidityTimeOffButton;
 
     // JSON Node names
     private static final String TAG_REFRESH_RATE = "REFRESH_RATE";
     private static final String TAG_FORECAST_RATE = "FORECAST_RATE";
     private static final String TAG_LOCATION = "LOCATION";
+    private static final String TAG_HUMIDITY = "HUMIDITY";
+    private static final String TAG_HUMIDITY_FORECAST = "HUMIDITY_FORECAST";
+    private static final String TAG_HUMIDITY_CRITICAL = "HUMIDITY_CRITICAL";
+    private static final String TAG_HUMIDITY_OFF = "HUMIDITY_OFF";
+    private static final String TAG_HUMIDITY_TIME = "HUMIDITY_TIME";
+    private static final String TAG_HUMIDITY_FORECAST_TIME = "HUMIDITY_FORECAST_TIME";
+    private static final String TAG_HUMIDITY_TIME_OFF = "HUMIDITY_TIME_OFF";
 
     // Hashmap for ListView
     HashMap<String, String> data;
@@ -62,10 +84,25 @@ public class AdvancedVariablesFragment extends Fragment {
         refreshField = (TextView) view.findViewById(R.id.refreshRate);
         forecastField = (TextView) view.findViewById(R.id.refreshForecastRate);
         locationField = (TextView) view.findViewById(R.id.location);
+        humidityField = (TextView) view.findViewById(R.id.min_humidity);
+        humidityForecastField = (TextView) view.findViewById(R.id.min_forecast_humidity);
+        humidityCriticalField = (TextView) view.findViewById(R.id.min_critical_humidity);
+        humidityOffField = (TextView) view.findViewById(R.id.max_humidity);
+        humidityTimeField = (TextView) view.findViewById(R.id.humidity_time);
+        humidityTimeForecastField = (TextView) view.findViewById(R.id.humidity_time_forecast);
+        humidityTimeOffField = (TextView) view.findViewById(R.id.humidity_time_off);
+
         buttonGet = (Button) view.findViewById(R.id.buttonGet);
         buttonRefreshRate = (Button) view.findViewById(R.id.refreshRateSend);
         buttonForecastRate = (Button) view.findViewById(R.id.refreshWeatherRateSend);
         buttonLocation = (Button) view.findViewById(R.id.locationSend);
+        humidityButton = (Button) view.findViewById(R.id.humidity_min_send);
+        humidityForecastButton = (Button) view.findViewById(R.id.humidity_min_forecast_send);
+        humidityCriticalButton = (Button) view.findViewById(R.id.humidity_min_critical_send);
+        humidityOffButton = (Button) view.findViewById(R.id.humidity_max_send);
+        humidityTimeButton = (Button) view.findViewById(R.id.humidity_time_send);
+        humidityTimeForecastButton = (Button) view.findViewById(R.id.humidity_time_forecast_send);
+        humidityTimeOffButton = (Button) view.findViewById(R.id.humidity_time_off_send);
 
         buttonGet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -91,6 +128,48 @@ public class AdvancedVariablesFragment extends Fragment {
             }
         });
 
+        humidityButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY, humidityField);
+            }
+        });
+
+        humidityForecastButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY_FORECAST, humidityForecastField);
+            }
+        });
+
+        humidityCriticalButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY_CRITICAL, humidityCriticalField);
+            }
+        });
+
+        humidityOffButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY_OFF, humidityOffField);
+            }
+        });
+
+        humidityTimeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY_TIME, humidityTimeField);
+            }
+        });
+
+        humidityTimeForecastButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY_FORECAST_TIME, humidityTimeForecastField);
+            }
+        });
+
+        humidityTimeOffButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeVariable(TAG_HUMIDITY_TIME_OFF, humidityTimeOffField);
+            }
+        });
+
         return view;
     }
 
@@ -106,7 +185,9 @@ public class AdvancedVariablesFragment extends Fragment {
     // When user clicks button, calls AsyncTask.
     // Before attempting to fetch the URL, makes sure that there is a network connection.
    public void readVariables() {
-        String[] vars = {TAG_REFRESH_RATE, TAG_FORECAST_RATE, TAG_LOCATION};
+        String[] vars = {TAG_REFRESH_RATE, TAG_FORECAST_RATE, TAG_LOCATION, TAG_HUMIDITY,
+                TAG_HUMIDITY_FORECAST, TAG_HUMIDITY_CRITICAL, TAG_HUMIDITY_OFF, TAG_HUMIDITY_TIME,
+                TAG_HUMIDITY_FORECAST_TIME, TAG_HUMIDITY_TIME_OFF};
         String URL = composeReadURL(vars);
         if (checkConnection()) {
             Log.d(DEBUG_TAG, "Connecting to: " + URL);
@@ -188,9 +269,24 @@ public class AdvancedVariablesFragment extends Fragment {
                 String refresh_rate = (String) data.get(TAG_REFRESH_RATE);
                 String forecast_rate = (String) data.get(TAG_FORECAST_RATE);
                 String location = (String) data.get(TAG_LOCATION);
+                String humidity = (String) data.get(TAG_HUMIDITY);
+                String humidity_forecast = (String) data.get(TAG_HUMIDITY_FORECAST);
+                String humidity_critical = (String) data.get(TAG_HUMIDITY_CRITICAL);
+                String humidity_off = (String) data.get(TAG_HUMIDITY_OFF);
+                String humidity_time = (String) data.get(TAG_HUMIDITY_TIME);
+                String humidity_forecast_time = (String) data.get(TAG_HUMIDITY_FORECAST_TIME);
+                String humidity_time_off = (String) data.get(TAG_HUMIDITY_TIME_OFF);
+
                 refreshField.setText(refresh_rate);
                 forecastField.setText(forecast_rate);
                 locationField.setText(location);
+                humidityField.setText(humidity);
+                humidityForecastField.setText(humidity_forecast);
+                humidityCriticalField.setText(humidity_critical);
+                humidityOffField.setText(humidity_off);
+                humidityTimeField.setText(humidity_time);
+                humidityTimeForecastField.setText(humidity_forecast_time);
+                humidityTimeOffField.setText(humidity_time_off);
             }
         }
     }
@@ -278,6 +374,13 @@ public class AdvancedVariablesFragment extends Fragment {
             String refresh_rate = serverJSON.getString(TAG_REFRESH_RATE);
             String forecast_rate = serverJSON.getString(TAG_FORECAST_RATE);
             String location = serverJSON.getString(TAG_LOCATION);
+            String humidity = serverJSON.getString(TAG_HUMIDITY);
+            String humidity_forecast = serverJSON.getString(TAG_HUMIDITY_FORECAST);
+            String humidity_critical = serverJSON.getString(TAG_HUMIDITY_CRITICAL);
+            String humidity_off = serverJSON.getString(TAG_HUMIDITY_OFF);
+            String humidity_time = serverJSON.getString(TAG_HUMIDITY_TIME);
+            String humidity_forecast_time = serverJSON.getString(TAG_HUMIDITY_FORECAST_TIME);
+            String humidity_time_off = serverJSON.getString(TAG_HUMIDITY_TIME_OFF);
 
             // New temp HashMap
             HashMap<String, String> data = new HashMap<>();
@@ -286,6 +389,13 @@ public class AdvancedVariablesFragment extends Fragment {
             data.put(TAG_REFRESH_RATE, refresh_rate);
             data.put(TAG_FORECAST_RATE, forecast_rate);
             data.put(TAG_LOCATION, location);
+            data.put(TAG_HUMIDITY, humidity);
+            data.put(TAG_HUMIDITY_FORECAST, humidity_forecast);
+            data.put(TAG_HUMIDITY_CRITICAL, humidity_critical);
+            data.put(TAG_HUMIDITY_OFF, humidity_off);
+            data.put(TAG_HUMIDITY_TIME, humidity_time);
+            data.put(TAG_HUMIDITY_FORECAST_TIME, humidity_forecast_time);
+            data.put(TAG_HUMIDITY_TIME_OFF, humidity_time_off);
 
             // Return the Hashmap
             return data;
